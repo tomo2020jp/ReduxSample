@@ -1,6 +1,6 @@
 package com.example.reduxsample.core
 
-import android.database.Observable
+import io.reactivex.Observable
 import io.reactivex.Single
 
 interface StateType
