@@ -7,13 +7,15 @@ import com.example.reduxsample.core.StateType
 import io.reactivex.Single
 
 class LoggerMiddleware : MiddlewareType {
+
     override fun before(state: StateType, action: ActionType): Single<ActionType> {
-        Log.d("ReduxLit", "Before dispatching: ${action::class.java.simpleName}")
+        Log.d("ReduxKit", "Before dispatching: ${action::class.java.simpleName}")
         return Single.just(action)
     }
 
     override fun after(state: StateType, action: ActionType): Single<ActionType> {
-        Log.d("ReduxKit", "After dispatching: ${action::class.simpleName}")
+        Log.d("ReduxKit", "After dispatching: ${action::class.java.simpleName}")
         return Single.just(action)
     }
+
 }

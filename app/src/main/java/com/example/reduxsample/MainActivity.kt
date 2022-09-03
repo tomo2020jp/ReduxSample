@@ -17,9 +17,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-//        setupRecyclerView()
-//        setupFloatingActionButton()
-//        refresh()
+        setupRecyclerView()
+        setupFloatingActionButton()
+        refresh()
     }
 
     override fun onDestroy() {
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
     }
 
-    private fun setupRecyclerView(){
+    private fun setupRecyclerView() {
         val adapter = TodoAdapter()
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = adapter
@@ -39,20 +39,21 @@ class MainActivity : AppCompatActivity() {
             .addTo(disposables)
     }
 
-    private fun setupFloatingActionButton(){
+    private fun setupFloatingActionButton() {
         binding.floatingActionButton
-            .setOnClickListener{
-                val todo = Todo("New Task", Date(),false)
+            .setOnClickListener {
+                val todo = Todo("🎉 NewTask!")
                 val action = AppAction.AddTodo(todo)
                 getAppStore().dispatch(action)
             }
     }
 
-    private fun getAppStore():AppStore{
+    private fun getAppStore(): AppStore {
         return (application as ReduxKit).appStore
     }
 
-    private fun refresh(){
+    private fun refresh() {
         getAppStore().dispatch(AppAction.RefreshTodos(Todo.createSampleTodos()))
     }
+
 }

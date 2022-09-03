@@ -10,11 +10,7 @@ class TodoAdapter(
     private val todos: MutableList<Todo> = mutableListOf()
 ) : RecyclerView.Adapter<TodoAdapter.ViewHolder>() {
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val title: TextView = view.findViewById(R.id.title)
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, position: Int): ViewHolder {
         val inflate = LayoutInflater.from(parent.context)
         return ViewHolder(inflate.inflate(R.layout.item_todo, parent, false))
     }
@@ -32,4 +28,9 @@ class TodoAdapter(
         this.todos.clear()
         this.todos.addAll(todos)
     }
+
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val title: TextView = view.findViewById(R.id.title)
+    }
+
 }

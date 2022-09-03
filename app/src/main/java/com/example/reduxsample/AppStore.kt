@@ -34,4 +34,5 @@ class AppStore(
     override fun removeMiddleware(middleware: MiddlewareType) {
         middlewares.remove(middleware)
     }
+
 }
